@@ -1,5 +1,3 @@
-# Cotacao do dolar for menor do que 5.20
-
 import requests
 import smtplib
 import email.message
@@ -11,14 +9,14 @@ cotacao = float(requisicao_dicionario['USDBRL']['bid'])
 # Enviar E-mail
 def enviar_email(cotacao):
     corpo_email = f"""
-    <p>Dólar está abaixo de R$ 5.20. Cotação atual: R${cotacao}</p>
+    <p>Dólar está abaixo de R$ 5.35. Cotação atual: R${cotacao}</p>
     """
 
     msg = email.message.Message()
-    msg['Subject'] = "Dólar está hoje abaixo de R$5.20"
-    msg['From'] = 'remetente'
-    msg['To'] = 'destinatário'
-    password = 'senha'
+    msg['Subject'] = "Dólar está hoje abaixo de R$5.35"
+    msg['From'] = 'wuulima@gmail.com'
+    msg['To'] = 'segurancati.deinf@gmail.com'
+    password = 'rvsauazbhodznwif'
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo_email )
 
@@ -29,5 +27,5 @@ def enviar_email(cotacao):
     s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
     print('Email enviado')
 
-if cotacao < 5.20:
+if cotacao < 5.35:
     enviar_email(cotacao)
